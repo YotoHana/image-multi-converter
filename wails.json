@@ -1,0 +1,13 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "ConvToWebp",
+  "outputfilename": "ConvToWebp",
+  "frontend:install": "npm install",
+  "frontend:build": "npm run build",
+  "frontend:dev:watcher": "npm run dev",
+  "frontend:dev:serverUrl": "auto",
+  "author": {
+    "name": "Leonid Lugovoj",
+    "email": "yotohana.dev@gmail.com"
+  }
+}
