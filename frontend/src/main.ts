@@ -75,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     fileItems.forEach((li: any) => fileList.appendChild(li));
                 }
             } else {
-                console.log("Вы ничего не выбрали")
                 alert("Вы ничего не выбрали")
             }
 
