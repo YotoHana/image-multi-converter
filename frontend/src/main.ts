@@ -1,4 +1,4 @@
-import './style.css';
+//import './style.css';
 import './app.css';
 import { FileDialog } from "../wailsjs/go/main/App"
 import { GetSizeMB } from "../wailsjs/go/main/App"
@@ -16,7 +16,7 @@ if (qualitySlider && qualityVal) {
     });
 }
 
-const perfTypes = ['Минимальная', 'Средняя', 'Высокая', 'Максимальная'];
+const perfTypes = ['Минимум', 'Средняя', 'Высокая', 'Максимум'];
 const perfSlider = document.getElementById('perfSlider') as HTMLInputElement;
 const perfVal = document.getElementById('perfVal');
 const sliderVal = parseInt(perfSlider.value, 10) - 1;
@@ -28,15 +28,6 @@ if (perfSlider && perfVal) {
         const sliderVal = parseInt(perfSlider.value, 10) - 1;
         perfVal.textContent = perfTypes[sliderVal];
     });
-}
-
-const perfSave = document.getElementById('perfSave') as HTMLInputElement;
-let saveSettings = false;
-
-if (perfSave.checked) {
-    saveSettings = true;
-} else {
-    saveSettings = false;
 }
 
 
@@ -107,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const quality = parseInt(qualitySlider.value, 10)
             const performance = parseInt(perfSlider.value, 10)
-            const convert = await Convert(quality, performance, saveSettings, paths, false);
+            const convert = await Convert(quality, performance, false, paths, false);
 
             if (convert) {
                 alert('Конвертация успешна!')

@@ -2,30 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport">
     <title>ConvToWEBP</title>
-    <link rel="stylesheet" href="./src/style.css">
+    <link href="./src/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 </head>
-<body>
-    <div>
-        <input type="range" id="qualitySlider" value="80" min="1" max="100"><br>
-        <label>Качество: <span id="qualityVal">80</span></label><br>
-        <input type="range" id="perfSlider" value="3" min="1" max="4"><br>
-        <label>Производительность: <span id="perfVal">Максимальная</span></label><br>
-        <label>Сохранить настройки:</label>
-        <input type="checkbox" id="perfSave">
-    </div>
-    <div>
-        <ul id="fileList" class="scrollable-filelist"></ul>
-    </div>
-    <div>
-        <label for="">Исходный размер: <span id="sizeMB">0</span> MB</label><br>
-        <label for="">Размер после конвертации: <span id="sizeMBConv">0</span> MB</label>
-    </div>
-    <div>
-        <button id="fileButton">Выбрать файлы</button>
-        <button id="convButton">Конвертировать</button>
-    </div>
+<body data-bs-theme="dark" >
+    <section class="vh-100 vw-100 container p-3 d-flex flex-column align-items-center text-center justify-content-between">
+        <div class="row vw-100">
+            <div class="col d-flex flex-column">
+                <input type="range" id="qualitySlider" value="80" min="1" max="100">
+                <label>Качество: <span id="qualityVal">80</span></label>
+            </div>
+            <div class="col d-flex flex-column">
+                <input type="range" class="bg-primary" id="perfSlider" value="3" min="1" max="4">
+                <label>Производительность: <span id="perfVal">Максимальная</span></label>
+            </div>
+        </div>
+        <div>
+            <ul id="fileList" style="max-height: 60vh; max-width: 90vw;" class="list-group overflow-auto text-nowrap gap-2">
+                <li class="h1">ИЗОБРАЖЕНИЙ НЕТ</li>
+            </ul>
+        </div>
+        <div class="d-flex flex-column gap-2">
+            <div>
+                <label for="">Исходный размер: <span id="sizeMB">0</span> MB</label><br>
+                <label for="">Размер после конвертации: <span id="sizeMBConv">0</span> MB</label>
+            </div>
+            <div class="g-2">
+                <button id="fileButton" class="btn btn-primary">Выбрать файлы</button>
+                <button id="convButton" class="btn btn-success">Конвертировать</button>
+            </div>
+        </div>
+    </section>
+    <script src="../bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script type="module" src="./src/main.ts"></script>
 </body>
 </html>
