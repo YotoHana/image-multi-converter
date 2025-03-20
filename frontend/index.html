@@ -4,28 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ConvToWEBP</title>
+    <link rel="stylesheet" href="./src/style.css">
 </head>
 <body>
     <div>
-        <input type="range" name="quality" id="" value="80" min="1" max="100"><br>
-        <label>Качество: <span id="NameQuality">80</span></label><br>
-        <input type="range" name="perfomance" id="" value="4" min="1" max="4"><br>
-        <label>Производительность: <span id="NamePerfomance">Максимальная</span></label><br>
-        <label>Сохранить уровень производительности</label>
-        <input type="checkbox" name="SavePerfomance" id="">
+        <input type="range" id="qualitySlider" value="80" min="1" max="100"><br>
+        <label>Качество: <span id="qualityVal">80</span></label><br>
+        <input type="range" id="perfSlider" value="3" min="1" max="4"><br>
+        <label>Производительность: <span id="perfVal">Максимальная</span></label><br>
+        <label>Сохранить настройки:</label>
+        <input type="checkbox" id="perfSave">
     </div>
     <div>
-        <ul>
-            TODO: Список выбранных файлов
-        </ul>
+        <ul id="fileList" class="scrollable-filelist"></ul>
     </div>
     <div>
-        <label for="">Исходный размер: <span id="SizeMB">0</span> MB</label><br>
-        <label for="">Размер после конвертации: <span id="SizeMBConv">0</span> MB</label>
+        <label for="">Исходный размер: <span id="sizeMB">0</span> MB</label><br>
+        <label for="">Размер после конвертации: <span id="sizeMBConv">0</span> MB</label>
     </div>
     <div>
-        <input type="button" value="Выбрать файлы" onclick="fileDialog()">
-        <input type="button" value="Конвертировать" onclick="convert()">
+        <button id="fileButton">Выбрать файлы</button>
+        <button id="convButton">Конвертировать</button>
     </div>
+    <script type="module" src="./src/main.ts"></script>
 </body>
 </html>

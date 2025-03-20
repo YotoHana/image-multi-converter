@@ -24,3 +24,18 @@ body {
     height: 100vh;
     text-align: center;
 }
+
+.scrollable-filelist {
+    list-style-type: none;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px;
+    margin: 5px;
+}
+
+.scrollable-filelist li {
+    text-align: left;
+    padding: 5px;
+}
