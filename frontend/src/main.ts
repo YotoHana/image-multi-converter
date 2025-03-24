@@ -7,6 +7,7 @@ import { Convert } from "../wailsjs/go/main/App"
 let paths: string[]
 const qualitySlider = document.getElementById('qualitySlider') as HTMLInputElement;
 const qualityVal = document.getElementById('qualityVal');
+const fileList = document.getElementById('fileList') as HTMLUListElement;
 
 if (qualitySlider && qualityVal) {
     qualityVal.textContent = qualitySlider.value;
@@ -30,6 +31,11 @@ if (perfSlider && perfVal) {
     });
 }
 
+function clearList(fileList: HTMLUListElement) {
+    while (fileList.firstChild) {
+        fileList.removeChild(fileList.firstChild)
+        }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     
@@ -38,13 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fileButton) {
         fileButton.addEventListener('click', async () => {
 
-            const fileList = document.getElementById('fileList');
-
-            if (fileList) {
-                while (fileList.firstChild) {
-                    fileList.removeChild(fileList.firstChild);
-                }
-            }
+            clearList(fileList);
 
             const filePaths = await FileDialog();
             paths = filePaths
@@ -63,8 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
 
-                const fileList = document.getElementById('fileList');
-
                 if (fileList) {
                     const fileItems = filePaths.map((path: string | null) => {
                         const li = document.createElement("li");
@@ -75,7 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     fileItems.forEach((li: any) => fileList.appendChild(li));
                 }
             } else {
-                alert("Вы ничего не выбрали")
+                if (fileList) {
+                    const listTextNone = document.createElement('h1');
+                    listTextNone.textContent = 'ВЫ НИЧЕГО НЕ ВЫБРАЛИ';
+                    fileList.appendChild(listTextNone);
+                }
             }
 
             const fileSize = await GetSizeMB();
@@ -100,7 +102,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const convert = await Convert(quality, performance, false, paths, false);
 
             if (convert) {
-                alert('Конвертация успешна!')
+                clearList(fileList);
+                if (fileList) {
+                    const listTextDone = document.createElement('h1');
+                    const listDescription = document.createElement('h5');
+                    listTextDone.textContent = 'КОНВЕРТАЦИЯ УСПЕШНА';
+                    listDescription.textContent = 'Готовые изображения вы можете найти в папке \"output\"';
+                    fileList.appendChild(listTextDone);
+                    fileList.appendChild(listDescription);
+                }
             }
         });
     }

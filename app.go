@@ -87,6 +87,10 @@ func (a *App) Convert(quality int, performance int, saveSettings bool, filePaths
 		}(v)
 	}
 	wg.Wait()
+	if sizeSum == 0 {
+		sizeSum = 1
+		return sizeSum
+	}
 	sizeSum *= 0.000001
 	fmt.Println(sizeSum, " GO BACKEND SIZE")
 	return sizeSum
